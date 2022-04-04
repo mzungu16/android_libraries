@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">android_libraries</string>
+    <string name="login">Введите логин</string>
+    <string name="password">Введите пароль</string>
+    <string name="confirm">Подтвердить</string>
 </resources>

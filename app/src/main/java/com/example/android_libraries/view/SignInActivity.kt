@@ -2,8 +2,8 @@ package com.example.android_libraries.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
-import com.example.android_libraries.R
 import com.example.android_libraries.contracts.SignInContract
 import com.example.android_libraries.databinding.ActivitySignInBinding
 import com.example.android_libraries.presenter.SignInPresenter
@@ -16,14 +16,22 @@ class SignInActivity : AppCompatActivity(), SignInContract.View {
         super.onCreate(savedInstanceState)
         binding = ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        presenter = SignInPresenter().also { presenter ->
-            presenter.onAttach(this)
-        }
+        presenter = checkPresenter()
+        presenter.onAttach(this)
         with(binding) {
             confirmButton.setOnClickListener {
-                presenter.onPressed(loginEditText.text.toString(), passwordEditText.text.toString())
+                presenter.onConfirm(loginEditText.text.toString(), passwordEditText.text.toString())
             }
         }
+    }
+
+    private fun checkPresenter(): SignInPresenter {
+        val presenter = lastCustomNonConfigurationInstance as? SignInPresenter
+        return presenter ?: SignInPresenter()
+    }
+
+    override fun onRetainCustomNonConfigurationInstance(): Any? {
+        return presenter
     }
 
     override fun setSuccess() {
@@ -42,6 +50,13 @@ class SignInActivity : AppCompatActivity(), SignInContract.View {
             loginEditText.text?.clear()
             loginEditText.requestFocus()
             passwordEditText.text?.clear()
+        }
+    }
+
+    override fun setProgressView(visible: Boolean) {
+        when (visible) {
+            false -> binding.progressView.visibility = View.GONE
+            true -> binding.progressView.visibility = View.VISIBLE
         }
     }
 

@@ -1,12 +1,10 @@
-package com.example.android_libraries.view
+package com.example.android_libraries.ui.SignInScreen
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import com.example.android_libraries.contracts.SignInContract
 import com.example.android_libraries.databinding.ActivitySignInBinding
-import com.example.android_libraries.presenter.SignInPresenter
 
 class SignInActivity : AppCompatActivity(), SignInContract.View {
     private lateinit var binding: ActivitySignInBinding

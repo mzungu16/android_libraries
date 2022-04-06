@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Android_libraries">
         <activity
-            android:name=".view.SignInActivity"
+            android:name=".ui.SignInScreen.SignInActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

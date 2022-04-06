@@ -1,9 +1,9 @@
-package com.example.android_libraries.presenter
+package com.example.android_libraries.ui.SignInScreen
 
 import android.os.Looper
-import com.example.android_libraries.contracts.SignInContract
 import com.example.android_libraries.model.SignInModel
 import android.os.Handler
+import com.example.android_libraries.ui.SignInScreen.SignInContract
 
 const val RESULT_OK = 1
 const val DELAY = 2_000L

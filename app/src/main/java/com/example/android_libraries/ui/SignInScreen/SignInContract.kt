@@ -1,4 +1,4 @@
-package com.example.android_libraries.contracts
+package com.example.android_libraries.ui.SignInScreen
 
 class SignInContract {
     interface View {

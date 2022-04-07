@@ -26,7 +26,7 @@ class SignInActivity : AppCompatActivity(), SignInContract.View {
 
     private fun checkPresenter(): SignInPresenter {
         val presenter = lastCustomNonConfigurationInstance as? SignInPresenter
-        return presenter ?: SignInPresenter(app.api)
+        return presenter ?: SignInPresenter(app.signInUsecase)
     }
 
     override fun onRetainCustomNonConfigurationInstance(): Any? {

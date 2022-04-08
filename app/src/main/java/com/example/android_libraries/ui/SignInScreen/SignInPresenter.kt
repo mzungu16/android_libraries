@@ -1,7 +1,7 @@
 package com.example.android_libraries.ui.SignInScreen
 
-import com.example.android_libraries.domain.SignInUsecase
 
+import com.example.android_libraries.domain.SignInUsecase
 
 const val RESULT_OK = 1
 
@@ -18,7 +18,8 @@ class SignInPresenter(private val signInUsecase: SignInUsecase) : SignInContract
 
     override fun onConfirm(login: String, password: String) {
         if (login.isNotEmpty() and password.isNotEmpty()) {
-            if (signInUsecase.checkResult() == RESULT_OK) {
+            signInUsecase.checkResult()
+            if (signInUsecase.getValue() == RESULT_OK) {
                 view.setSuccess()
             } else {
                 view.setFailure()

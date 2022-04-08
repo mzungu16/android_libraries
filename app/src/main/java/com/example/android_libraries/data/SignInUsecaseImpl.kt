@@ -1,22 +1,19 @@
 package com.example.android_libraries.data
 
+import android.os.Handler
 import com.example.android_libraries.domain.SignInApi
 import com.example.android_libraries.domain.SignInUsecase
 
 
 class SignInUsecaseImpl(
     private val api: SignInApi,
+    private val handler: Handler
 ) : SignInUsecase {
-    var number = 0
-    override fun checkResult() {
+    override fun checkResult(callback: (Int) -> Unit) {
         Thread {
-            Thread.sleep(2000)
-            number = api.checkResult()
+            handler.postDelayed({
+                callback(api.checkResult())
+            }, 2000)
         }.start()
-        Thread.currentThread().join(2000)
-    }
-
-    override fun getValue(): Int {
-        return number
     }
 }

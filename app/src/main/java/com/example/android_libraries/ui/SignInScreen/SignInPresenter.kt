@@ -21,6 +21,7 @@ class SignInPresenter(private val signInUsecase: SignInUsecase) : SignInContract
             signInUsecase.checkResult()
             if (signInUsecase.getValue() == RESULT_OK) {
                 view.setSuccess()
+                isRestored = true
             } else {
                 view.setFailure()
             }

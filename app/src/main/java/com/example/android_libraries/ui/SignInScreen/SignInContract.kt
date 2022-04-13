@@ -1,15 +1,10 @@
 package com.example.android_libraries.ui.SignInScreen
 
-class SignInContract {
-    interface View {
-        fun setSuccess()
-        fun setFailure()
-        fun setProgressView(visible: Boolean)
-        fun isFormFilled()
-    }
-
-    interface Presenter {
-        fun onAttach(view: View)
-        fun onConfirm(login: String, password: String)
+import androidx.lifecycle.LiveData
+interface SignInContract {
+    interface ViewModel {
+        fun getLiveData():LiveData<Int>
+        fun setValue()
+        fun getAccess()
     }
 }

@@ -2,10 +2,7 @@ package com.example.android_libraries
 
 import android.app.Application
 import android.content.Context
-import android.os.Handler
-import android.os.Looper
 import com.example.android_libraries.data.MockSignInImpl
-import com.example.android_libraries.data.SignInUsecaseImpl
 
 class App : Application() {
     val api by lazy { MockSignInImpl() }

@@ -12,8 +12,4 @@ class SignInContract {
         fun onAttach(view: View)
         fun onConfirm(login: String, password: String)
     }
-
-    interface Model {
-        fun internetAccess(): Int
-    }
 }

@@ -1,9 +1,10 @@
 package com.example.android_libraries.ui.SignInScreen
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.example.android_libraries.app
 import com.example.android_libraries.databinding.ActivitySignInBinding
 
 class SignInActivity : AppCompatActivity(), SignInContract.View {
@@ -25,7 +26,7 @@ class SignInActivity : AppCompatActivity(), SignInContract.View {
 
     private fun checkPresenter(): SignInPresenter {
         val presenter = lastCustomNonConfigurationInstance as? SignInPresenter
-        return presenter ?: SignInPresenter()
+        return presenter ?: SignInPresenter(app.signInUsecase)
     }
 
     override fun onRetainCustomNonConfigurationInstance(): Any? {

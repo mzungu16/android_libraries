@@ -6,7 +6,7 @@ const val RESULT_OK = 1
 
 class SignInPresenter(private val signInUsecase: SignInUsecase) : SignInContract.Presenter {
     private lateinit var view: SignInContract.View
-    private var isRestored = false
+    var isRestored = false
 
     override fun onAttach(view: SignInContract.View) {
         this.view = view
@@ -16,7 +16,8 @@ class SignInPresenter(private val signInUsecase: SignInUsecase) : SignInContract
     }
 
     override fun onConfirm(login: String, password: String) {
-        if (login.isNotEmpty() and password.isNotEmpty()) {
+        val value = checkMethod(login,password)
+        if (value) {
             view.setProgressView(true)
             signInUsecase.checkResult {
                 if (it == RESULT_OK) {
@@ -31,5 +32,8 @@ class SignInPresenter(private val signInUsecase: SignInUsecase) : SignInContract
         } else {
             view.isFormFilled()
         }
+    }
+    fun checkMethod(login: String,password: String) : Boolean{
+        return login.isNotEmpty() and password.isNotEmpty()
     }
 }
